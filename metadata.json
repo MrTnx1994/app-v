@@ -1,0 +1,6 @@
+{
+  "name": "سیستم مدیریت توزیع تنقلات",
+  "description": "سیستم یکپارچه برنامه‌ریزی فروش، مدیریت ناوگان و توزیع ویژه بنکداری و پخش تنقلات و آجیل",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

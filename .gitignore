@@ -1,0 +1,8 @@
+node_modules/
+build/
+# dist/ (Commented out so that pre-built files are included in ZIP export for cPanel)
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
