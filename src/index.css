@@ -1,0 +1,462 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Vazirmatn", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  direction: rtl;
+  background: linear-gradient(to left, #fbcfe8, #e9d5ff, #c7d2fe, #bfdbfe, #99f6e4) !important;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Hide number input spinners (up/down arrows/steppers) */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Custom Webkit scrollbar for light modern tables */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Print optimizations for waybills */
+@media print {
+  @page {
+    size: auto;
+    margin: 5mm;
+  }
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .print-modal-backdrop {
+    display: block !important;
+    position: static !important;
+    background: white !important;
+    color: black !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  .print-modal-backdrop .no-print {
+    display: none !important;
+  }
+  #printable-matrix-outer {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  #printable-matrix {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    break-inside: avoid !important;
+  }
+  thead {
+    display: table-header-group !important;
+  }
+  tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+}
+
+/* ========================================== */
+/*   GORGEOUS HIGH-CONTRAST DARK THEME        */
+/* ========================================== */
+
+@variant dark (&:where(.dark, .dark *));
+
+.dark {
+  color-scheme: dark;
+}
+
+/* Base Body and Text */
+.dark body {
+  background: linear-gradient(to left, #2e1065, #1e1b4b, #172554, #064e3b) !important;
+  background-attachment: fixed;
+  color: #f1f5f9 !important;
+}
+
+/* Background overrides */
+.dark .bg-slate-50 {
+  background-color: #080c14 !important;
+}
+.dark .bg-white {
+  background-color: #0f172a !important; /* deep slate-900 */
+}
+.dark .bg-slate-100 {
+  background-color: #1e293b !important; /* slate-800 */
+}
+.dark .bg-slate-200 {
+  background-color: #334155 !important; /* slate-700 */
+}
+.dark .bg-slate-300 {
+  background-color: #475569 !important; /* slate-600 */
+}
+.dark .bg-slate-50\/50 {
+  background-color: rgba(15, 23, 42, 0.5) !important;
+}
+.dark .bg-slate-50\/80 {
+  background-color: rgba(15, 23, 42, 0.8) !important;
+}
+.dark .bg-slate-100\/50 {
+  background-color: rgba(30, 41, 59, 0.5) !important;
+}
+.dark .bg-slate-100\/80 {
+  background-color: rgba(30, 41, 59, 0.8) !important;
+}
+.dark .bg-slate-200\/30 {
+  background-color: rgba(51, 65, 85, 0.3) !important;
+}
+.dark .bg-cyan-100\/30 {
+  background-color: rgba(6, 182, 212, 0.25) !important;
+}
+.dark .bg-emerald-100\/60 {
+  background-color: rgba(16, 185, 129, 0.25) !important;
+}
+.dark .bg-emerald-50 {
+  background-color: rgba(16, 185, 129, 0.15) !important;
+}
+.dark .bg-rose-50 {
+  background-color: rgba(244, 63, 94, 0.15) !important;
+}
+.dark .bg-cyan-50 {
+  background-color: rgba(6, 182, 212, 0.15) !important;
+}
+.dark .bg-amber-50 {
+  background-color: rgba(245, 158, 11, 0.12) !important;
+}
+.dark .bg-indigo-50 {
+  background-color: rgba(99, 102, 241, 0.15) !important;
+}
+
+/* Hover background states */
+.dark .hover\:bg-slate-50:hover {
+  background-color: #1e293b !important;
+}
+.dark .hover\:bg-slate-100:hover {
+  background-color: #334155 !important;
+}
+.dark .hover\:bg-slate-200:hover {
+  background-color: #475569 !important;
+}
+.dark .hover\:bg-cyan-50:hover {
+  background-color: rgba(6, 182, 212, 0.25) !important;
+}
+
+/* Border overrides */
+.dark .border-slate-100 {
+  border-color: #1e293b !important;
+}
+.dark .border-slate-200 {
+  border-color: #1e293b !important;
+}
+.dark .border-slate-300 {
+  border-color: #334155 !important;
+}
+.dark .border-slate-400 {
+  border-color: #475569 !important;
+}
+.dark .border-cyan-200 {
+  border-color: rgba(6, 182, 212, 0.3) !important;
+}
+.dark .border-amber-200 {
+  border-color: rgba(245, 158, 11, 0.3) !important;
+}
+.dark .border-slate-900 {
+  border-color: #cbd5e1 !important;
+}
+
+/* Text overrides */
+.dark .text-slate-900 {
+  color: #f8fafc !important;
+}
+.dark .text-slate-800 {
+  color: #f1f5f9 !important;
+}
+.dark .text-slate-700 {
+  color: #e2e8f0 !important;
+}
+.dark .text-slate-600 {
+  color: #cbd5e1 !important;
+}
+.dark .text-slate-500 {
+  color: #94a3b8 !important;
+}
+.dark .text-slate-400 {
+  color: #64748b !important;
+}
+.dark .text-cyan-700 {
+  color: #22d3ee !important; /* bright modern cyan */
+}
+.dark .text-cyan-800 {
+  color: #67e8f9 !important;
+}
+.dark .text-cyan-900 {
+  color: #a5f3fc !important;
+}
+.dark .text-amber-800 {
+  color: #fbbf24 !important; /* warm yellow */
+}
+.dark .text-amber-900 {
+  color: #fde047 !important;
+}
+.dark .text-emerald-700 {
+  color: #34d399 !important;
+}
+.dark .text-emerald-800 {
+  color: #34d399 !important;
+}
+.dark .text-emerald-950 {
+  color: #a7f3d0 !important;
+}
+.dark .text-rose-700 {
+  color: #fca5a5 !important;
+}
+.dark .text-rose-800 {
+  color: #f87171 !important;
+}
+.dark .text-rose-900 {
+  color: #fecaca !important;
+}
+.dark .text-rose-950 {
+  color: #ffe4e6 !important;
+}
+.dark .text-blue-900 {
+  color: #93c5fd !important;
+}
+.dark .text-blue-800 {
+  color: #93c5fd !important;
+}
+.dark .text-blue-950 {
+  color: #38bdf8 !important;
+}
+.dark .text-purple-800 {
+  color: #d8b4fe !important;
+}
+
+/* Table-specific Text Overrides in Dark Mode */
+.dark table .text-black,
+.dark table .text-slate-900,
+.dark table .text-slate-800,
+.dark table .text-slate-700 {
+  color: #f1f5f9 !important;
+}
+
+/* Specific cell backgrounds in Planning tab */
+.dark .bg-emerald-200 {
+  background-color: rgba(6, 78, 59, 0.45) !important; /* deep rich emerald */
+  color: #34d399 !important;
+}
+.dark .bg-emerald-100 {
+  background-color: rgba(6, 78, 59, 0.25) !important;
+  color: #34d399 !important;
+}
+.dark .bg-emerald-100\/60 {
+  background-color: rgba(6, 78, 59, 0.15) !important;
+  color: #a7f3d0 !important;
+}
+.dark .bg-rose-100 {
+  background-color: rgba(159, 18, 57, 0.45) !important; /* deep dark red for shortage */
+  color: #fca5a5 !important;
+}
+.dark .bg-rose-50 {
+  background-color: rgba(159, 18, 57, 0.2) !important;
+  color: #fda4af !important;
+}
+.dark .bg-blue-300 {
+  background-color: #1e3a8a !important; /* dark slate-blue for headers */
+  color: #f8fafc !important;
+}
+.dark .border-blue-400 {
+  border-color: #3b82f6 !important;
+}
+.dark .bg-blue-200 {
+  background-color: #1e293b !important;
+  color: #38bdf8 !important;
+}
+.dark .bg-blue-100 {
+  background-color: #0f172a !important;
+  color: #93c5fd !important;
+}
+.dark .bg-blue-50 {
+  background-color: #0f172a !important;
+  color: #93c5fd !important;
+}
+
+/* Enable group hover/focus highlight on blue-50, blue-100, blue-200 in dark mode */
+.dark .group:hover .bg-blue-50,
+.dark .group:hover .bg-blue-100,
+.dark .group:hover .bg-blue-200 {
+  background-color: #1e293b !important; /* light highlight on hover */
+  color: #38bdf8 !important;
+}
+
+.dark .group:focus-within .bg-blue-50,
+.dark .group:focus-within .bg-blue-100,
+.dark .group:focus-within .bg-blue-200 {
+  background-color: #1d4ed8 !important; /* highly visible premium blue highlight on focus/active */
+  color: #ffffff !important;
+}
+
+/* Driver loads/search summary areas */
+.dark .bg-orange-100 {
+  background-color: #3b1706 !important; /* dark rich brown-orange for readability */
+  color: #ffedd5 !important;
+}
+.dark th.bg-orange-100,
+.dark td.bg-orange-100 {
+  background-color: #3b1706 !important;
+  color: #ffedd5 !important;
+}
+.dark .bg-orange-50\/15,
+.dark .bg-orange-100\/20,
+.dark .bg-orange-100\/30,
+.dark .bg-orange-100\/40 {
+  background-color: rgba(124, 45, 18, 0.12) !important;
+}
+.dark .bg-orange-100\/70 {
+  background-color: rgba(124, 45, 18, 0.4) !important;
+  color: #fdba74 !important;
+}
+.dark .text-red-700 {
+  color: #f97316 !important;
+}
+
+/* Warehouse Custom Colors (Exact Excel replica matches) */
+.dark .border-\[\#70ad47\] {
+  border-color: #334155 !important;
+}
+.dark .bg-\[\#c6e0b4\] {
+  background-color: #064e3b !important; /* deep forest green */
+  color: #a7f3d0 !important;
+}
+.dark .bg-\[\#e2efda\] {
+  background-color: rgba(6, 78, 59, 0.3) !important; /* dark emerald */
+  color: #34d399 !important;
+}
+.dark .bg-\[\#a9d08e\] {
+  background-color: #065f46 !important; /* darker emerald total */
+  color: #a7f3d0 !important;
+}
+.dark .bg-\[\#fce4d6\] {
+  background-color: #7c2d12 !important; /* dark rust */
+  color: #ffedd5 !important;
+}
+.dark .bg-\[\#fdf2e9\] {
+  background-color: rgba(124, 45, 18, 0.3) !important; /* dark peach/rust */
+  color: #fdba74 !important;
+}
+.dark .bg-\[\#f4b084\] {
+  background-color: #9a3412 !important; /* dark orange/brown */
+  color: #ffedd5 !important;
+}
+
+/* Additional specific texts */
+.dark .text-emerald-600 {
+  color: #34d399 !important;
+}
+.dark .text-amber-600 {
+  color: #fdba74 !important;
+}
+.dark .text-amber-950 {
+  color: #ffedd5 !important;
+}
+
+/* Elements */
+.dark input[type="text"],
+.dark input[type="number"],
+.dark input[type="password"],
+.dark input[type="email"],
+.dark select,
+.dark textarea {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+  border-color: #334155 !important;
+}
+
+.dark input[type="text"]:focus,
+.dark input[type="number"]:focus,
+.dark select:focus,
+.dark textarea:focus {
+  border-color: #06b6d4 !important;
+  outline: none;
+}
+
+.dark input::placeholder {
+  color: #64748b !important;
+}
+
+.dark td, .dark th {
+  border-color: #1e293b !important;
+}
+
+.dark .divide-slate-200 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #1e293b !important;
+}
+
+/* Shadows, selections and lists */
+.dark .selection\:bg-cyan-200 {
+  background-color: rgba(6, 182, 212, 0.4) !important;
+  color: #ffffff !important;
+}
+
+.dark .shadow-sm,
+.dark .shadow-md,
+.dark .shadow-lg,
+.dark .shadow-xl {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Custom scrollbars inside dark mode */
+.dark::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+.dark::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+.dark::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+
