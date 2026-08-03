@@ -1,0 +1,6 @@
+{
+  "name": "سیستم یکپارچه توزیع",
+  "description": "سیستم یکپارچه توزیع، برنامه‌ریزی فروش و پخش آنلاین برنا تجارت باور",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
